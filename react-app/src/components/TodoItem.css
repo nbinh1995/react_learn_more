@@ -1,0 +1,22 @@
+.TodoItem {
+    font-family:'Arial';
+    font-weight: 300;
+    font-size: 24px;
+    color: #4d4d4d;
+    border-top: 1px solid black;
+}
+.TodoItem img, .TodoItem p{
+    display: inline;
+    vertical-align: middle;
+}
+.TodoItem img {
+    margin: 10px;
+}
+.TodoItem:first-child{
+    border: none;
+}
+
+.TodoItem--done{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
