@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import Dashboard from './component/LiveChatApp/Dashboard';
+import Store from './component/LiveChatApp/Store';
 // import RecipeList from './component/RecipeList/RecipeList';
 
 function App() {
@@ -8,8 +9,10 @@ function App() {
 
   return (
     <div className="App">
-        {/* <RecipeList /> */}
-        <Dashboard />
+        {/* <RecipeList />  */}
+        <Store>
+          <Dashboard />
+        </Store>
     </div>
   );
 }
