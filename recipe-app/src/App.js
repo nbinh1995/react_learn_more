@@ -8,12 +8,13 @@ function App() {
   
 
   return (
+    <Store>
     <div className="App">
         {/* <RecipeList />  */}
-        <Store>
+       
           <Dashboard />
-        </Store>
     </div>
+    </Store>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Chip, List, ListItem, ListItemText, makeStyles, Paper, TextField, Typography } from '@material-ui/core';
 import {CTX} from './Store';
@@ -41,8 +41,13 @@ function Dashboard(props) {
     const [textValue, changeTextValue] = useState('')
     // CTX Store
     const {allChats, sendChatAction ,user} =  useContext(CTX);
+    const [Chats, setChats] = useState(allChats);
+    useEffect(()=>{
+        console.log('alo');
+        setChats(allChats);
+    },[Chats])
 
-    const topics = Object.keys(allChats);
+    const topics = Object.keys(Chats);
 
     //local state
     const [activeTopic, changeActiveTopic] = useState(topics[0])
@@ -71,7 +76,7 @@ function Dashboard(props) {
                 <div className={classes.chatWindow}>
                     <List>
                         {
-                            allChats[activeTopic].map((chat,i) => (
+                            Chats[activeTopic].map((chat,i) => (
                                 <div className={classes.flex} key={i}>
                                     <Chip label={chat.from} className={classes.Chip} />
                                     <Typography variant='body1' gutterBottom>{chat.msg}</Typography>

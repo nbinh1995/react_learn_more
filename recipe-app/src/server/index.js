@@ -8,10 +8,12 @@ const io = require("socket.io")(httpServer, options);
 
 io.on("connection", socket => { 
     
-    socket.on("chatMessage", (arg) => {
-        console.log(arg); // world
+    socket.on("chatMessage", (msg) => {
+        console.log('messages: ' + JSON.stringify(msg));
+            io.emit('chatMessage',msg);
     });
- });
+    
+});
 
 httpServer.listen(3001,function(){
     console.log('listening on *:3001')
