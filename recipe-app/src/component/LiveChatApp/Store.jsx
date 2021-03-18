@@ -19,7 +19,7 @@ Store.propTypes = {
     //     ]
     // }
 
-const initialState ={
+const initState ={
     general: [
         {from: 'binh', msg: 'hello'},
         {from: 'binh', msg: 'hello'},
@@ -38,11 +38,7 @@ const reducer = (state,action)=>{
     switch(action.type){
         case 'RECEIVE_MESSAGE':
             return{
-                ...state,
-                // [topic]:[
-                //     ...state[topic],
-                //     {from,msg}
-                // ]
+                ...state
             }
         default:
         return state;
@@ -52,22 +48,19 @@ const reducer = (state,action)=>{
 let socket;
 
 const sendChatAction = (socket,value) => {
-    socket.emit("chat message",value );
+    socket.emit("chatMessage",value );
 }
 function Store(props) {
     if(!socket){
         socket = io(':3001');
+        console.log(socket);
     }
 
-    const user ='binh'+Math.random(100).toFixed(2);
+    const user ='binh'+Math.random(100).toFixed(0);
 
-    const [allChats, dispatch] = React.useReducer(
-        reducer,
-        initialState
-    );
-
+    const [allChats, dispatch] = useReducer(reducer, initState);
     return (
-        <CTX.Provider value={allChats ,sendChatAction ,user}>
+        <CTX.Provider value={{allChats ,sendChatAction ,user}}>
             {props.children}
         </CTX.Provider>
     );

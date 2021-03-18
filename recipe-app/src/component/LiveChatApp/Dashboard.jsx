@@ -41,7 +41,7 @@ function Dashboard(props) {
     const [textValue, changeTextValue] = useState('')
     // CTX Store
     const {allChats, sendChatAction ,user} =  useContext(CTX);
-    console.log(allChats);
+
     const topics = Object.keys(allChats);
 
     //local state
@@ -89,7 +89,7 @@ function Dashboard(props) {
                 onChange={e => changeTextValue(e.target.value)}
                 />
                 <Button variant="contained" color="primary" onClick={ () =>{
-                    sendChatAction({from: user, msg: textValue});
+                    sendChatAction({from: user, msg: textValue, topic: activeTopic});
                     changeTextValue('');
                 }}>
                     Send

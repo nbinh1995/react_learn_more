@@ -8,7 +8,7 @@ const io = require("socket.io")(httpServer, options);
 
 io.on("connection", socket => { 
     
-    socket.on("chat message", (arg) => {
+    socket.on("chatMessage", (arg) => {
         console.log(arg); // world
     });
  });
