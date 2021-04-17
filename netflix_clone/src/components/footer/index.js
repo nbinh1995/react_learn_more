@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container , Row , Column , Link , Title , Text ,Break, SelectLang } from './styles/footer'
+import { Container , Row , Column , Link , Title , Text ,Break , Lang} from './styles/footer'
 
 export default function Footer({children, ...restProps}) {
     return (
@@ -32,4 +32,14 @@ Footer.Text = function FooterText ({children,...restProps}){
 
 Footer.Break = function FooterBreak ({children,...restProps}){
     return <Break {...restProps}>{children}</Break>
+}
+
+Footer.Lang = function FooterLang({children,...restProps}){
+    return <Lang >
+        <div {...restProps}>
+        <select {...restProps}>
+        {children.map((child,index) => {return (<option value={child.code} key={index}>{child.text}</option> )})}
+        </select>
+        </div>
+        </Lang>
 }

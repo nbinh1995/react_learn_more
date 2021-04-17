@@ -1,7 +1,7 @@
 import React from 'react'
 import {Footer} from '../components'
-
-export default function FooterContainer() {
+import config from '../fixtures/config'
+export function FooterContainer() {
     return (
         <Footer>
             <Footer.Title>
@@ -37,6 +37,9 @@ export default function FooterContainer() {
                 </Footer.Column>
             </Footer.Row>
             <Footer.Break />
+            <Footer.Lang>
+                {config.lang}
+            </Footer.Lang>
             <Footer.Text>Netflix United Kingdom</Footer.Text>
         </Footer>
     )
